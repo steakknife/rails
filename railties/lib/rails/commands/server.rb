@@ -60,7 +60,7 @@ module Rails
     end
 
     def set_environment
-      ENV["RAILS_ENV"] ||= options[:environment]
+      Rails.env = ENV["RAILS_ENV"] ||= options[:environment]
     end
 
     def start
