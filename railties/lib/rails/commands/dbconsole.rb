@@ -1,6 +1,7 @@
 require 'erb'
 require 'yaml'
 require 'optparse'
+require 'rails/env'
 
 module Rails
   class DBConsole
@@ -104,11 +105,7 @@ module Rails
     end
 
     def environment
-      if Rails.respond_to?(:env)
-        Rails.env
-      else
-        ENV["RAILS_ENV"] || ENV["RACK_ENV"] || "development"
-      end
+      Rails.env
     end
 
     protected
