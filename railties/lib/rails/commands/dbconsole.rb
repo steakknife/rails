@@ -2,6 +2,7 @@ require 'erb'
 require 'yaml'
 require 'optparse'
 require 'rbconfig'
+require 'rails/env'
 
 module Rails
   class DBConsole
@@ -17,7 +18,7 @@ module Rails
 
     def start
       options = parse_arguments(arguments)
-      ENV['RAILS_ENV'] = options[:environment] || environment
+      Rails.env = options[:environment]
 
       case config["adapter"]
       when /^(jdbc)?mysql/
@@ -105,11 +106,7 @@ module Rails
     end
 
     def environment
-      if Rails.respond_to?(:env)
-        Rails.env
-      else
-        ENV["RAILS_ENV"] || ENV["RACK_ENV"] || "development"
-      end
+      Rails.env
     end
 
     protected

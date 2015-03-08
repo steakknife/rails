@@ -1,7 +1,8 @@
 require 'optparse'
 require 'rbconfig'
+require 'rails/env'
 
-options = { environment: (ENV['RAILS_ENV'] || ENV['RACK_ENV'] || "development").dup }
+options = { environment: Rails.env.to_s }
 code_or_file = nil
 
 if ARGV.first.nil?
@@ -46,7 +47,7 @@ end
 
 ARGV.delete(code_or_file)
 
-ENV["RAILS_ENV"] = options[:environment]
+Rails.env = options[:environment]
 
 require APP_PATH
 Rails.application.require_environment!
