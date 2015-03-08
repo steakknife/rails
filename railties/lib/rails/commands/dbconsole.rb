@@ -16,7 +16,7 @@ module Rails
 
     def start
       options = parse_arguments(arguments)
-      ENV['RAILS_ENV'] = options[:environment] || environment
+      Rails.env = ENV['RAILS_ENV'] = options[:environment] || environment
 
       case config["adapter"]
       when /^(jdbc)?mysql/
