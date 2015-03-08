@@ -59,7 +59,7 @@ EOT
       options = Rails::Console.parse_arguments(argv)
 
       # RAILS_ENV needs to be set before config/application is required
-      ENV['RAILS_ENV'] = options[:environment] if options[:environment]
+      Rails.env = ENV['RAILS_ENV'] = options[:environment] if options[:environment]
 
       # shift ARGV so IRB doesn't freak
       shift_argv!
