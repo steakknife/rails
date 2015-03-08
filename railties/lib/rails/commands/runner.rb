@@ -45,7 +45,7 @@ end
 
 ARGV.delete(code_or_file)
 
-ENV["RAILS_ENV"] = options[:environment]
+Rails.env = ENV["RAILS_ENV"] ||= options[:environment]
 
 require APP_PATH
 Rails.application.require_environment!
