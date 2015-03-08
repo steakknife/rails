@@ -1,3 +1,5 @@
+require 'rails/env'
+
 module Rails
   # This is a class which takes in a rails command and initiates the appropriate
   # initiation sequence.
