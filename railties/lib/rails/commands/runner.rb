@@ -1,6 +1,7 @@
 require 'optparse'
+require 'rails/env'
 
-options = { environment: (ENV['RAILS_ENV'] || ENV['RACK_ENV'] || "development").dup }
+options = { environment: Rails.env.to_s }
 code_or_file = nil
 
 if ARGV.first.nil?
